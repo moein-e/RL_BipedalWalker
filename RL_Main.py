@@ -19,11 +19,11 @@ tau = 0.001
 update_per_step = 1
 eps_start = 1.0
 eps_end = 0.15
-eps_decay = 0.995
+eps_decay = 0.998
 std_dev = 0.8
 seed = 5      
-num_episodes = 2000
-smoothing_window = 50
+num_episodes = 10
+smoothing_window = 1
 
 # Weight and Biases (wandb) parameters ========
 wandb_report = False
@@ -128,3 +128,18 @@ if wandb_report: wandb.log({'test_return': ddpg_return})
 #   if done:
 #     obs = env.reset()
 # env.close()
+
+# torch.save(Q_ddpg_trained.actor.state_dict(), 'checkpoint1_2.pth')
+# Q_ddpg_trained.actor.load_state_dict(torch.load('trained_agent/checkpoint1.pth'))
+
+# env = gym.wrappers.Monitor(env, "trained_agent/trained_results", force=True)
+# obs = env.reset()
+# cum_reward = 0
+# done = False
+# while not done:
+#   env.render()
+#   action = Q_ddpg_trained.get_action(obs)
+#   obs, reward, done, info = env.step(action)
+#   cum_reward += reward
+# env.close()
+# print(f'cumulative reward = {cum_reward:.2f}')

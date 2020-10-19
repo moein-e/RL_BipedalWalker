@@ -1,8 +1,9 @@
 import gym
 
 env = gym.make("BipedalWalker-v3")
+# env = gym.wrappers.Monitor(env, "trained_agent/Episode=0", force=True)
 observation = env.reset()
-for _ in range(500):
+for _ in range(250):
   env.render()
   action = env.action_space.sample() # your agent here (this takes random actions)
   observation, reward, done, info = env.step(action)
