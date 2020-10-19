@@ -59,11 +59,7 @@ class DDPGAgent:
         return q_loss, policy_loss
                 
     def learn(self, experiences):
-        """Update value parameters using given batch of experience tuples.
-        Params
-        ======
-            experiences (Tuple[torch.Tensor]): tuple of (s, a, r, s', done) tuples 
-        """
+        """Updating actor and critic parameters based on sampled experiences from replay buffer."""
         states, actions, rewards, next_states, dones = experiences
    
         curr_Q = self.critic(states, actions)
@@ -97,13 +93,7 @@ class ReplayBuffer:
     """Fixed-size buffer to store experience tuples."""
 
     def __init__(self, buffer_size, batch_size, seed):
-        """Initialize a ReplayBuffer object.
-        Params
-        ======
-            buffer_size (int): maximum size of buffer
-            batch_size (int): size of each training batch
-            seed (int): random seed
-        """
+
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.buffer = deque(maxlen=buffer_size)  
         self.batch_size = batch_size

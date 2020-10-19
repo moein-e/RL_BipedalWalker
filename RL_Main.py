@@ -22,8 +22,8 @@ eps_end = 0.15
 eps_decay = 0.998
 std_dev = 0.8
 seed = 5      
-num_episodes = 10
-smoothing_window = 1
+num_episodes = 2000
+smoothing_window = 50
 
 # Weight and Biases (wandb) parameters ========
 wandb_report = False
@@ -46,7 +46,6 @@ if wandb_report:
     config.seed = seed
     config.num_episodes = num_episodes
     config.smoothing_window = smoothing_window
-    config.comment = 'tanh in nn, noise+clip'
 
 #===================
 np.random.seed(seed)

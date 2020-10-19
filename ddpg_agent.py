@@ -2,7 +2,7 @@ import numpy as np
 import wandb
 
 def run_episode_ddpg(Q, env):
-    """ Runs an episode for an agent, returns the return."""
+    """ Runs an episode for an agent, returns the cumulative reward."""
     state = env.reset()
     done = False
     return_ = 0
@@ -11,10 +11,10 @@ def run_episode_ddpg(Q, env):
         next_state, reward, done, _ = env.step(action)
         state = next_state
         return_ += reward
-    
     return return_
 
 def ddpg_train(env, agent, max_episodes, std_dev, eps_start, eps_end, eps_decay, wandb_report):
+    """ Training the ddpg agent. Applying eps-decay exploration."""
     all_training_returns = []
     all_actions = []
     all_actions_raw = []
