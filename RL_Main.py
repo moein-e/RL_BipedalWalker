@@ -19,7 +19,7 @@ tau = 0.001
 update_per_step = 1
 eps_start = 1.0
 eps_end = 0.15
-eps_decay = 0.998
+eps_decay = 0.995
 std_dev = 0.8
 seed = 5      
 num_episodes = 2000
@@ -115,8 +115,8 @@ plt.show()
 if wandb_report: wandb.log({'Actor Loss': wandb.Image(fig4)})
 
 # =============================== TESTING ===================================
-ddpg_return = np.mean([run_episode_ddpg(Q_ddpg_trained, env) for _ in range(5)])
-print(f'Trained DDPG return = {ddpg_return}')
+ddpg_return = np.mean([run_episode_ddpg(Q_ddpg_trained, env) for _ in range(10)])
+print(f'Average DDPG cumulative reward over 10 runs = {ddpg_return:.2f}')
 if wandb_report: wandb.log({'test_return': ddpg_return})
 
 # obs = env.reset()
