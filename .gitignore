@@ -46,5 +46,5 @@ Thumbs.db
 ####################
 __pycache__/
 wandb/
-trained_agent/
+trained_agent (not in git)/
 *.txt

@@ -16,7 +16,7 @@ env = gym.make("BipedalWalker-v3")
 
 Q_ddpg = DDPGAgent(env, gamma, tau, buffer_size, batch_size, critic_lr, actor_lr, update_per_step, seed)
 
-Q_ddpg.actor.load_state_dict(torch.load('trained_agent/checkpoint1.pth'))
+Q_ddpg.actor.load_state_dict(torch.load('Trained Agent/checkpoint1.pth'))
 
 # env = gym.wrappers.Monitor(env, "trained_agent/trained_results", force=True)
 obs = env.reset()

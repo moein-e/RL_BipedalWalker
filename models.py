@@ -7,14 +7,11 @@ class Actor(nn.Module):
         super(Actor, self).__init__()
         self.seed = torch.manual_seed(seed)
         self.linear1 = nn.Linear(state_dim, units_fc1) 
-        # self.linear2 = nn.Linear(64, 64)
         self.linear3 = nn.Linear(units_fc1, num_actions)
 
     def forward(self, state):
         x = F.relu(self.linear1(state))
-        # x = F.relu(self.linear2(x))
         x = torch.tanh(self.linear3(x))
-        # x = self.linear3(x)
         return x
     
 class Critic(nn.Module):

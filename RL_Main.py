@@ -118,27 +118,3 @@ if wandb_report: wandb.log({'Actor Loss': wandb.Image(fig4)})
 ddpg_return = np.mean([run_episode_ddpg(Q_ddpg_trained, env) for _ in range(10)])
 print(f'Average DDPG cumulative reward over 10 runs = {ddpg_return:.2f}')
 if wandb_report: wandb.log({'test_return': ddpg_return})
-
-# obs = env.reset()
-# for _ in range(500):
-#   env.render()
-#   action = Q_ddpg_trained.get_action(obs)
-#   obs, reward, done, info = env.step(action)
-#   if done:
-#     obs = env.reset()
-# env.close()
-
-# torch.save(Q_ddpg_trained.actor.state_dict(), 'checkpoint1_2.pth')
-# Q_ddpg_trained.actor.load_state_dict(torch.load('trained_agent/checkpoint1.pth'))
-
-# env = gym.wrappers.Monitor(env, "trained_agent/trained_results", force=True)
-# obs = env.reset()
-# cum_reward = 0
-# done = False
-# while not done:
-#   env.render()
-#   action = Q_ddpg_trained.get_action(obs)
-#   obs, reward, done, info = env.step(action)
-#   cum_reward += reward
-# env.close()
-# print(f'cumulative reward = {cum_reward:.2f}')
